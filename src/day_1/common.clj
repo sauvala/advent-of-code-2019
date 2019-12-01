@@ -29,5 +29,5 @@
   [modules-fuel]
   (->> modules-fuel
        (map #(calc-mass-vec % []))
-       (map #(reduce + %))
+       flatten
        (reduce +)))
