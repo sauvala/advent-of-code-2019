@@ -19,7 +19,7 @@
   [module-masses]
   (map fuel-for-mass module-masses))
 
-(defn calc-mass-vec
+(defn calc-total-fuel-vec
   [fuel-mass fuel-masses]
   (if (pos? fuel-mass)
     (recur (fuel-for-mass fuel-mass) (conj fuel-masses fuel-mass))
@@ -28,6 +28,6 @@
 (defn calc-total-fuel
   [modules-fuel]
   (->> modules-fuel
-       (map #(calc-mass-vec % []))
+       (map #(calc-total-fuel-vec % []))
        flatten
        (reduce +)))
